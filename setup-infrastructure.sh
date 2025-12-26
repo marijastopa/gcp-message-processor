@@ -23,13 +23,6 @@ REGION=${REGION:-"europe-west1"}
 BUCKET_NAME=${BUCKET_NAME:-"${PROJECT_ID}-message-storage"}
 TOPIC_NAME=${TOPIC_NAME:-"message-topic"}
 
-echo "GCP Infrastructure Setup"
-echo "Project: $PROJECT_ID"
-echo "Region: $REGION"
-echo "Bucket: $BUCKET_NAME"
-echo "Topic: $TOPIC_NAME"
-echo ""
-
 # Set project
 echo "Setting default project..."
 gcloud config set project $PROJECT_ID
@@ -40,6 +33,8 @@ gcloud services enable cloudfunctions.googleapis.com
 gcloud services enable pubsub.googleapis.com
 gcloud services enable storage.googleapis.com
 gcloud services enable cloudbuild.googleapis.com
+gcloud services enable eventarc.googleapis.com
+gcloud services enable run.googleapis.com
 
 echo "Waiting for APIs to be enabled..."
 sleep 10
